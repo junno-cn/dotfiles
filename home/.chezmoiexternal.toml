@@ -1,0 +1,4 @@
+[".local/bin/z.lua"]
+    type = "file"
+    url = "https://raw.fastgit.org/skywind3000/z.lua/master/z.lua"
+    executable = true

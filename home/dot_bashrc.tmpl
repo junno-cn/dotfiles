@@ -115,6 +115,8 @@ if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
 
+# z.lua for bash configure
+eval "$(lua ${HOME}/.local/bin/z.lua --init bash once enhanced)"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
