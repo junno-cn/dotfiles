@@ -1,4 +1,21 @@
+{{- /* "chezmoi" is present as work around for https://github.com/twpayne/chezmoi/discussions/1724 */ -}}
+{{- $cache := dict "chezmoi" .chezmoi -}}
+
+{{- template "read-versions-and-revisions-cache" $cache -}}
+
+
 [".local/bin/z.lua"]
     type = "file"
     url = "https://raw.fastgit.org/skywind3000/z.lua/master/z.lua"
     executable = true
+
+{{- if eq .chezmoi.os "linux" }}
+{{- $bwcliVersion :="2022.9.0"}}
+[".local/bin/bw"]
+    type = "file"
+    url = "https://download.fastgit.org/bitwarden/clients/releases/download/cli-v{{$bwcliVersion}}/bw-{{ .chezmoi.os }}-{{ $bwcliVersion }}.zip"
+    executable = true
+    [".local/bin/bw".filter]
+        command = "zcat"
+
+{{- end}}
