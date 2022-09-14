@@ -15,3 +15,8 @@ if [[ -z "${COMING_FROM_BASHRC}" && -r "${HOME}/.bashrc" ]]; then
   source "${HOME}/.bashrc"
   unset COMING_FROM_BASH_PROFILE
 fi
+
+# configure for gpg-agent
+export GPG_TTY=/dev/pts/1
+export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
+echo UPDATESTARTUPTTY | gpg-connect-agent 1> /dev/null
