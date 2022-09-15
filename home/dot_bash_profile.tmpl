@@ -17,6 +17,6 @@ if [[ -z "${COMING_FROM_BASHRC}" && -r "${HOME}/.bashrc" ]]; then
 fi
 
 # configure for gpg-agent
-export GPG_TTY=/dev/pts/1
-export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
-echo UPDATESTARTUPTTY | gpg-connect-agent 1> /dev/null
+#export GPG_TTY=/dev/pts/1
+#export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
+#echo UPDATESTARTUPTTY | gpg-connect-agent 1> /dev/null
