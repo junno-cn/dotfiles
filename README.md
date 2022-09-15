@@ -15,5 +15,7 @@ bw sync
 
 bw get attachment 872de2d191fd6f50a676 --itemid 2cea3e57-032a-4c5f-b2e3-f5656c9af06c
 
+# gpgconf --kill gpg-agent
+# gpg-agent daemon
 chezmoi execute-template '{{- bitwardenAttachment "$FILENAME" "$ITEMID" -}}' | gpg --import -
 ```
