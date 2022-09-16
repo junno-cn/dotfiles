@@ -1,13 +1,16 @@
 {{- $name := "junno-cn" -}}
 {{- $email := "asdusr@foxmail.com" -}}
-
+{{- $main := "611ECD7DA2214A89"}}
+{{- $sub := "89233DDF26FB803A"}}
 
 [data]
-    email = "{{ $email }}"
-    name = "{{ $name}}"
+email = "{{ $email }}"
+name = "{{ $name}}"
+sub = "{{ $sub }}"
+main = "{{ $main }}"
 # encry use gpg
 encryption = "gpg"
 
 # configure recipient for gpg
 [gpg]
-  recipient = "70C23CEACC3E45025C7BCDD7611ECD7DA2214A89"
+recipient = "70C23CEACC3E45025C7BCDD7611ECD7DA2214A89"
