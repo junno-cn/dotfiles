@@ -1,3 +1,8 @@
+{{- $osID := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
 {{- $name := "junno-cn" -}}
 {{- $email := "asdusr@foxmail.com" -}}
 {{- $main := "611ECD7DA2214A89"}}
@@ -8,8 +13,10 @@ email = "{{ $email }}"
 name = "{{ $name}}"
 sub = "{{ $sub }}"
 main = "{{ $main }}"
+osid = {{ $osID | quote }}
 # encry use gpg
 encryption = "gpg"
+
 
 # bitwarden
 [data.bitwarden]
