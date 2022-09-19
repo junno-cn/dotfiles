@@ -21,4 +21,11 @@ bw get attachment 872de2d191fd6f50a676 --itemid 2cea3e57-032a-4c5f-b2e3-f5656c9a
 chezmoi execute-template '{{- bitwardenAttachment "gpg-secret-sub.asc" .bitwarden.gpg_secret_sub -}}' | gpg --import -
 chezmoi execute-template '{{- bitwardenAttachment "$FILENAME" "$ITEMID" -}}' | gpg --import -
 
+
+# gnome-terminal configure
+dconf dump /org/gnome/terminal/ > ~/.gnome-terminal.properties
+cat ~/.gnome-terminal.properties | dconf load /org/gnome/terminal/
+
+# first sudo apt instll dconf
+sudo apt install dconf-cli
 ```

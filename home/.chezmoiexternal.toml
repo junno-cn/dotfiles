@@ -18,4 +18,27 @@
     [".local/bin/bw".filter]
         command = "zcat"
 
-{{- end}}
+{{-   $fontDir := "" }}
+{{-   if eq .chezmoi.os "darwin" }}
+{{-     $fontDir = "Library/Fonts" }}
+{{-   else if eq .chezmoi.os "linux" }}
+{{-     $fontDir = ".local/share/fonts" }}
+{{-   end }}
+
+["{{ $fontDir }}/Sarasa Mono SC Nerd Regular.ttf"]
+    type = "file"
+    url = "https://raw.fastgit.org/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-regular.ttf"
+    refreshPeriod = "168h"
+["{{ $fontDir }}/Sarasa Mono SC Nerd Bold.ttf"]
+    type = "file"
+    url = "https://raw.fastgit.org/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-bold.ttf"
+    refreshPeriod = "168h"
+["{{ $fontDir }}/Sarasa Mono SC Nerd Italic.ttf"]
+    type = "file"
+    url = "https://raw.fastgit.org/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-italic.ttf"
+    refreshPeriod = "168h"
+["{{ $fontDir }}/Sarasa Mono SC Nerd Bold Italic.ttf"]
+    type = "file"
+    url = "https://raw.fastgit.org/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-bolditalic.ttf"
+    refreshPeriod = "168h"
+{{- end }}
