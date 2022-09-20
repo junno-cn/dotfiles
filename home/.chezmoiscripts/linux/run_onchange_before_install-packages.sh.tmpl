@@ -11,6 +11,16 @@
      "lua5.4"
      "zsh" -}}
 
+{{ $classicSnaps := list -}}
+
+{{ if not .headless -}}
+{{   $packages = mustAppend $packages "vim-gtk" "meld" -}}
+{{   $classicSnaps = mustAppend $classicSnaps "code" -}}
+{{ end -}}
+
+{{ if .personal -}}
+{{   $classicSnaps = mustAppend $classicSnaps "goreleaser" -}}
+{{ end -}}
 
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
@@ -23,5 +33,9 @@ set -eufo pipefail
 
 {{ $sudo }}apt-get update -y
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
+
+{{ range $classicSnaps }}
+{{ $sudo }}snap install --classic {{ . }}
+{{ end }}
 
 {{ end -}}

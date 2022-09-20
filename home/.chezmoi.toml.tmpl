@@ -1,3 +1,11 @@
+{{/* boolean feature tags */}}
+{{- $docker := false -}}{{/* true if this machine should have Docker installed */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
+{{- "" -}}
+
+
 {{- $osID := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
@@ -13,6 +21,10 @@ email = "{{ $email }}"
 name = "{{ $name}}"
 sub = "{{ $sub }}"
 main = "{{ $main }}"
+docker = {{ $docker }}
+ephemeral = {{ $ephemeral }}
+headless = {{ $headless }}
+personal = {{ $personal }}
 osid = {{ $osID | quote }}
 # encry use gpg
 encryption = "gpg"
