@@ -14,7 +14,8 @@
 {{ $classicSnaps := list -}}
 
 {{ if not .headless -}}
-{{   $packages = mustAppend $packages "vim-gtk" "meld" -}}
+{{   $packages = mustAppend $packages "vim-gtk" -}}
+{{   $packages = mustAppend $packages "meld" -}}
 {{   $classicSnaps = mustAppend $classicSnaps "code" -}}
 {{ end -}}
 
