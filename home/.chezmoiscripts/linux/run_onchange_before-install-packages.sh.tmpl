@@ -1,0 +1,25 @@
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+
+{{ $packages := list
+     "curl"
+     "direnv"
+     "git-lfs"
+     "jq"
+     "ripgrep"
+     "units"
+     "vim"
+     "lua5.4"
+     "zsh" -}}
+
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $sudo }}apt-get update -y
+{{ $sudo }}apt-get install -y {{ $packages | join " " }}
