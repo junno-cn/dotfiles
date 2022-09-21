@@ -5,3 +5,11 @@
 	
 [commit]
     gpgsign = true
+
+{{- if not .ephemeral }}
+[url "git@github.com:chezmoi/"]
+	insteadOf = https://kgithub.com/chezmoi/
+[url "git@github.com:twpayne/"]
+	insteadOf = https://kgithub.com/twpayne/
+{{- end -}}
+{{/* vim: set filetype=gitconfig: */}}
