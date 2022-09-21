@@ -29,3 +29,6 @@ export LESS_TERMCAP_us=$(printf '\e[04;36m')  # enter underline mode - cyan
 export GPG_TTY=/dev/pts/1
 export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
 echo UPDATESTARTUPTTY | gpg-connect-agent 1> /dev/null
+
+# configure for goproxy
+export GOPROXY=https://proxy.golang.com.cn,direct
