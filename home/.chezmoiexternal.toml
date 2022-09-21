@@ -3,6 +3,10 @@
 
 {{- template "read-versions-and-revisions-cache" $cache -}}
 
+[".vim/autoload/plug.vim"]
+    type = "file"
+    url = "https://raw.fastgit.org/junegunn/vim-plug/master/plug.vim"
+    refreshPeriod = "168h"
 
 [".local/bin/z.lua"]
     type = "file"
