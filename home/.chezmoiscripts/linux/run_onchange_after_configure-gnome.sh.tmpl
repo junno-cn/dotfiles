@@ -1,0 +1,26 @@
+{{ if (and (eq .chezmoi.os "linux") (not .headless)) -}}
+{{-  $desktopEnv := output "printenv" "XDG_CURRENT_DESKTOP" |trim -}}
+{{-    if eq $desktopEnv "ubuntu:GNOME" -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+fc-cache
+
+gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+#profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
+#gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ font "MesloLGS NF"
+gsettings set org.gnome.desktop.interface monospace-font-name 'Sarasa Mono SC Nerd 13'
+
+gsettings set org.gnome.shell favorite-apps "[ \
+	'code_code.desktop', \
+	'org.gnome.Terminal.desktop', \
+	'org.gnome.Nautilus.desktop' \
+]"
+
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+#gsettings set org.gnome.shell.extensions.dash-to-dock dock-position RIGHT
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true
+{{-  end -}}
+{{ end -}}

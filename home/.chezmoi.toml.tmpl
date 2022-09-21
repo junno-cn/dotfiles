@@ -16,6 +16,42 @@
 {{- $main := "611ECD7DA2214A89"}}
 {{- $sub := "89233DDF26FB803A"}}
 
+{{/* work around unreliable hostname on darwin */}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
+{{-   if eq $computerName "macPC" -}}
+{{-     $hostname = "macPC" -}}
+{{-   else -}}
+{{-     $hostname = $computerName -}}
+{{-   end -}}
+{{- end -}}
+
+{{- if eq .chezmoi.os "windows" -}}
+{{-   $ephemeral = true -}}
+{{- end -}}
+
+{{- if not $ephemeral -}}
+{{-   if eq $hostname "udev" -}}
+{{-     $docker = false -}}
+{{-     $personal = false -}}
+{{-   else if eq $hostname "udev" -}}
+{{-     $docker = false -}}
+{{-     $personal = false -}}
+{{-   else if eq $hostname "toms-mba" -}}
+{{-     $personal = false -}}
+{{-   else if stdinIsATTY -}}
+{{-     $headless = promptBoolOnce . "headless" "headless" -}}
+{{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
+{{-     if not $ephemeral -}}
+{{-       $docker = promptBoolOnce . "docker" "docker" -}}
+{{-     end -}}
+{{-   else -}}
+{{-     $ephemeral = true -}}
+{{-     $headless = true -}}
+{{-   end -}}
+{{- end -}}
+
 [data]
 email = "{{ $email }}"
 name = "{{ $name}}"
