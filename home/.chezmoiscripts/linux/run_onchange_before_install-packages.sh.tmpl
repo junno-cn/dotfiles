@@ -25,7 +25,7 @@
 {{ if not .headless -}}
 {{   $packages = mustAppend $packages "vim-gtk" -}}
 {{   $packages = mustAppend $packages "meld" -}}
-{{   $classicSnaps = mustAppend $classicSnaps "code" -}}
+{{/*   $classicSnaps = mustAppend $classicSnaps "code"*/ -}}
 {{ end -}}
 
 {{ if .personal -}}
@@ -43,6 +43,10 @@ set -eufo pipefail
 
 {{ $sudo }}apt-get update -y
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
+
+trap "rm -rf code_1.71.2-1663191218_amd64.deb" EXIT
+wget https://az764295.vo.msecnd.net/stable/74b1f979648cc44d385a2286793c226e611f59e7/code_1.71.2-1663191218_amd64.deb
+sudo apt install -y ./code_1.71.2-1663191218_amd64.deb
 
 {{ range $classicSnaps }}
 {{ $sudo }}snap install --classic {{ . }}
