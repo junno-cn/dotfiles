@@ -22,6 +22,11 @@
     [".local/bin/bw".filter]
         command = "zcat"
 
+{{- $zhwikiVersion := "20220909" }}
+[".local/share/fcitx5/pinyin/dictionaries/zhwiki-{{ $zhwikiVersion }}.dict"]
+    type = "file"
+    url = "https://download.fastgit.org/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-{{ $zhwikiVersion }}.dict"
+
 {{-   $fontDir := "" }}
 {{-   if eq .chezmoi.os "darwin" }}
 {{-     $fontDir = "Library/Fonts" }}
