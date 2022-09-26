@@ -50,6 +50,11 @@ trap "rm -rf code_1.71.2-1663191218_amd64.deb" EXIT
 wget https://az764295.vo.msecnd.net/stable/74b1f979648cc44d385a2286793c226e611f59e7/code_1.71.2-1663191218_amd64.deb
 sudo apt install -y ./code_1.71.2-1663191218_amd64.deb
 
+
+trap "rm -rf bat_0.22.1_amd64.deb" EXIT
+wget https://download.fastgit.org/sharkdp/bat/releases/download/v0.22.1/bat_0.22.1_amd64.deb
+sudo apt install -y ./bat_0.22.1_amd64.deb
+
 {{ range $classicSnaps }}
 {{ $sudo }}snap install --classic {{ . }}
 {{ end }}
