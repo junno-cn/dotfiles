@@ -1,7 +1,6 @@
-{{ if (and (eq .osid "linux-ubuntu") (not .headless)) -}}
-{{-  $ubuntuDesktopEnv := output "printenv" "XDG_CURRENT_DESKTOP" | trim -}}
-{{-  $fedoraDesktopEnv := output "printenv" "DESKTOP_SESSION" | trim -}}
-{{-    if (or (eq $ubuntuDesktopEnv "ubuntu:GNOME") (eq $fedoraDesktopEnv "gnome")) -}}
+{{ if (and (eq .osid "linux-ubuntu" "linux-fedora") (not .headless)) -}}
+{{-  $desktopEnv := output "printenv" "XDG_CURRENT_DESKTOP" | trim -}}
+{{-    if eq $desktopEnv "ubuntu:GNOME" "GNOME" -}}
 #!/bin/bash
 
 set -eufo pipefail
