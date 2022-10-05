@@ -59,4 +59,44 @@ sudo apt install -y ./bat_0.22.1_amd64.deb
 {{ $sudo }}snap install --classic {{ . }}
 {{ end }}
 
+{{-  else if eq .osid "linux-fedora" -}}
+{{ $packages := list
+     "direnv"
+     "git-lfs"
+     "jq"
+     "inxi"
+     "neofetch"
+     "tig"
+     "exa"
+     "ripgrep"
+     "units"
+     "vim"
+     "lua"
+     "bat"
+     "zsh" -}}
+{{ if not .headless -}}
+{{   $packages = mustAppend $packages "vim-X11" -}}
+{{   $packages = mustAppend $packages "fcitx5" -}}
+{{   $packages = mustAppend $packages "fcitx5-chinese-addons" -}}
+{{   $packages = mustAppend $packages "fcitx5-configtool" -}}
+{{   $packages = mustAppend $packages "gnome-tweaks" -}}
+{{   $packages = mustAppend $packages "meld" -}}
+{{ end -}}
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/bash
+  
+set -eufo pipefail
+  
+{{ $sudo }}dnf update -y
+{{ $sudo }}dnf install -y {{ $packages | join " " }}
+
+trap "rm -rf code-1.71.2-1663191299.el7.x86_64.rpm" EXIT
+wget https://az764295.vo.msecnd.net/stable/74b1f979648cc44d385a2286793c226e611f59e7/code-1.71.2-1663191299.el7.x86_64.rpm
+{{ $sudo }}dnf localinstall -y ./code-1.71.2-1663191299.el7.x86_64.rpm
+
 {{ end -}}
