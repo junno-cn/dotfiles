@@ -27,6 +27,12 @@
     type = "file"
     url = "https://download.fastgit.org/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-{{ $zhwikiVersion }}.dict"
 
+[".local/share/fcitx5/themes"]
+    type = "archive"
+    url = "https://kgithub.com/sxqsfun/fcitx5-sogou-themes/archive/refs/heads/master.zip"
+    exact = true
+    stripComponents = 1
+
 {{-   $fontDir := "" }}
 {{-   if eq .chezmoi.os "darwin" }}
 {{-     $fontDir = "Library/Fonts" }}
