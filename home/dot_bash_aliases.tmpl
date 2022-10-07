@@ -40,3 +40,15 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # some aliases for chezmoi
 alias cm='chezmoi'
+
+# junno's personal aliases configure
+alias g=git
+{{- if lookPath "bat" }}
+alias cat=bat
+{{- else if lookPath "batcat" }}
+alias cat=batcat
+{{- end }}
+{{- if lookPath "exa" }}
+alias ls=exa
+{{- end }}
+
