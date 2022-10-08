@@ -45,17 +45,13 @@ set -eufo pipefail
 {{ $sudo }}apt-get update -y
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
 
-if [ -f /usr/bin/code ]; then
-echo "vscode installed"
-else
+if ! [ -f /usr/bin/code ]; then
 trap "rm -rf code_1.71.2-1663191218_amd64.deb" EXIT
 wget https://az764295.vo.msecnd.net/stable/74b1f979648cc44d385a2286793c226e611f59e7/code_1.71.2-1663191218_amd64.deb
 sudo apt install -y ./code_1.71.2-1663191218_amd64.deb
 fi
 
-if [ -f /usr/bin/bat ]; then
-echo "bat installed"
-else
+if ! [ -f /usr/bin/bat ]; then
 trap "rm -rf bat_0.22.1_amd64.deb" EXIT
 wget https://download.fastgit.org/sharkdp/bat/releases/download/v0.22.1/bat_0.22.1_amd64.deb
 sudo apt install -y ./bat_0.22.1_amd64.deb
@@ -102,9 +98,7 @@ set -eufo pipefail
 {{ $sudo }}dnf update -y
 {{ $sudo }}dnf install -y {{ $packages | join " " }}
 
-if [ -f /usr/bin/code ]; then
-echo "vscode installed"
-else
+if ! [ -f /usr/bin/code ]; then
 trap "rm -rf code-1.71.2-1663191299.el7.x86_64.rpm" EXIT
 wget https://az764295.vo.msecnd.net/stable/74b1f979648cc44d385a2286793c226e611f59e7/code-1.71.2-1663191299.el7.x86_64.rpm
 {{ $sudo }}dnf localinstall -y ./code-1.71.2-1663191299.el7.x86_64.rpm
