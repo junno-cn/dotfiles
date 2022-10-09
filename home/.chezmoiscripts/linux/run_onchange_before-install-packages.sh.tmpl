@@ -1,5 +1,3 @@
-{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
-
 {{ $packages := list
      "curl"
      "direnv"
@@ -8,14 +6,15 @@
      "ripgrep"
      "units"
      "vim"
-     "lua5.4"
      "zsh" -}}
-
 
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
 {{   $sudo = "" -}}
 {{ end -}}
+
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+{{ $packages = mustAppend $packages "lua5.4" }}
 
 #!/bin/bash
 
@@ -23,5 +22,13 @@ set -eufo pipefail
 
 {{ $sudo }}apt-get update -y
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
+
+{{ else if eq .osid "linux-endeavouros" "linux-manjaro" -}}
+{{ $packages = mustAppend $packages "lua" }}
+
+#!/usr/bin/bash
+
+{{ $sudo }}pacman -Syy 
+{{ $sudo }}pacman -S --noconfirm --needed {{ $packages | join " " }}
 
 {{ end -}}
