@@ -7,6 +7,11 @@ to bitwarden with:
 
 ```bash
 
+# Ubuntu install chezmoi & bw-cli
+
+snap install chezmoi --classic
+snap install bw --classic
+
 bw config server https://personal.keys.server
 
 bw login

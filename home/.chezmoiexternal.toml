@@ -4,16 +4,16 @@
 {{- template "read-versions-and-revisions-cache" $cache -}}
 
 
+{{- if eq .chezmoi.os "linux" }}
 [".local/bin/z.lua"]
     type = "file"
-    url = "https://raw.fastgit.org/skywind3000/z.lua/master/z.lua"
+    url = "https://ghproxy.com/https://raw.githubusercontent.com/skywind3000/z.lua/master/z.lua"
     executable = true
 
-{{- if eq .chezmoi.os "linux" }}
 {{- $bwcliVersion :="2022.9.0"}}
 [".local/bin/bw"]
     type = "file"
-    url = "https://download.fastgit.org/bitwarden/clients/releases/download/cli-v{{$bwcliVersion}}/bw-{{ .chezmoi.os }}-{{ $bwcliVersion }}.zip"
+    url = "https://ghproxy.com/https://github.com/bitwarden/clients/releases/download/cli-v{{$bwcliVersion}}/bw-{{ .chezmoi.os }}-{{ $bwcliVersion }}.zip"
     executable = true
     [".local/bin/bw".filter]
         command = "zcat"
