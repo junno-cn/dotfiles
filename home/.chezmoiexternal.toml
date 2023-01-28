@@ -5,19 +5,19 @@
 
 [".vim/autoload/plug.vim"]
     type = "file"
-    url = "https://raw.fastgit.org/junegunn/vim-plug/master/plug.vim"
+    url = "https://ghproxy.com/https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     refreshPeriod = "168h"
 
 [".local/bin/z.lua"]
     type = "file"
-    url = "https://raw.fastgit.org/skywind3000/z.lua/master/z.lua"
+    url = "https://ghproxy.com/https://raw.githubusercontent.com/skywind3000/z.lua/master/z.lua"
     executable = true
 
 {{- if eq .chezmoi.os "linux" }}
 {{- $bwcliVersion :="2022.9.0"}}
 [".local/bin/bw"]
     type = "file"
-    url = "https://download.fastgit.org/bitwarden/clients/releases/download/cli-v{{$bwcliVersion}}/bw-{{ .chezmoi.os }}-{{ $bwcliVersion }}.zip"
+    url = "https://ghproxy.com/https://github.com/bitwarden/clients/releases/download/cli-v{{$bwcliVersion}}/bw-{{ .chezmoi.os }}-{{ $bwcliVersion }}.zip"
     executable = true
     [".local/bin/bw".filter]
         command = "zcat"
@@ -25,7 +25,7 @@
 {{- $zhwikiVersion := "20220909" }}
 [".local/share/fcitx5/pinyin/dictionaries/zhwiki-{{ $zhwikiVersion }}.dict"]
     type = "file"
-    url = "https://download.fastgit.org/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-{{ $zhwikiVersion }}.dict"
+    url = "https://ghproxy.com/https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-{{ $zhwikiVersion }}.dict"
 
 [".local/share/fcitx5/themes"]
     type = "archive"
@@ -42,18 +42,18 @@
 
 ["{{ $fontDir }}/Sarasa Mono SC Nerd Regular.ttf"]
     type = "file"
-    url = "https://raw.fastgit.org/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-regular.ttf"
+    url = "https://ghproxy.com/https://raw.githubusercontent.com/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-regular.ttf"
     refreshPeriod = "168h"
 ["{{ $fontDir }}/Sarasa Mono SC Nerd Bold.ttf"]
     type = "file"
-    url = "https://raw.fastgit.org/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-bold.ttf"
+    url = "https://ghproxy.com/https://raw.githubusercontent.com/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-bold.ttf"
     refreshPeriod = "168h"
 ["{{ $fontDir }}/Sarasa Mono SC Nerd Italic.ttf"]
     type = "file"
-    url = "https://raw.fastgit.org/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-italic.ttf"
+    url = "https://ghproxy.com/https://raw.githubusercontent.com/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-italic.ttf"
     refreshPeriod = "168h"
 ["{{ $fontDir }}/Sarasa Mono SC Nerd Bold Italic.ttf"]
     type = "file"
-    url = "https://raw.fastgit.org/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-bolditalic.ttf"
+    url = "https://ghproxy.com/https://raw.githubusercontent.com/laishulu/Sarasa-Mono-SC-Nerd/master/sarasa-mono-sc-nerd-bolditalic.ttf"
     refreshPeriod = "168h"
 {{- end }}

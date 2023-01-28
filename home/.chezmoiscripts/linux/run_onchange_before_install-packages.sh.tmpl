@@ -53,7 +53,7 @@ fi
 
 if ! [ -f /usr/bin/bat ]; then
 trap "rm -rf bat_0.22.1_amd64.deb" EXIT
-wget https://download.fastgit.org/sharkdp/bat/releases/download/v0.22.1/bat_0.22.1_amd64.deb
+wget https://ghproxy.com/https://github.com/sharkdp/bat/releases/download/v0.22.1/bat_0.22.1_amd64.deb
 sudo apt install -y ./bat_0.22.1_amd64.deb
 fi
 
