@@ -1,0 +1,22 @@
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+
+{{ $packages := list
+     "microsoft-edge-stable"
+-}}
+
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $sudo }} add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+
+{{ $sudo }}apt-get update -y
+{{ $sudo }}apt-get install -y {{ $packages | join " " }}
+
+{{ end -}}
