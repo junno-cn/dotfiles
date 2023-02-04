@@ -8,9 +8,6 @@ set -eufo pipefail
 fc-cache
 
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
-#profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
-#gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ font "MesloLGS NF"
-gsettings set org.gnome.desktop.interface monospace-font-name 'Sarasa Mono SC Nerd 13'
 
 # gsettings  添加 favorite-apps
 # gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed s/.$//), 'appname.desktop']"
@@ -19,12 +16,35 @@ gsettings set org.gnome.shell favorite-apps "[ \
 	'org.gnome.Terminal.desktop', \
 	'code.desktop', \
 	'org.gnome.Nautilus.desktop', \
-	'microsoft-edge.desktop' \
+	'microsoft-edge.desktop', \
+	'firefox_firefox.desktop', \
+	'org.remmina.Remmina.desktop', \
+	'gnome-control-center.desktop', \
+	'org.gnome.tweaks.desktop' \
 ]"
 
-#gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-#gsettings set org.gnome.shell.extensions.dash-to-dock dock-position RIGHT
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position LEFT
 gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true
+# 开启分数比例缩放
+# gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+# 字体缩放比例
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+# gnome-tweaks 字体设置
+gsettings set org.gnome.desktop.interface font-name '更纱黑体 Mono SC Nerd 12'
+gsettings set org.gnome.desktop.interface document-font-name '更纱黑体 Mono SC Nerd 12'
+
+# font-hinting 微调
+gsettings set org.gnome.desktop.interface font-hinting 'full'
+
+
+
+# gnome terminal 字体设置
+#profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
+#gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ font "MesloLGS NF"
+gsettings set org.gnome.desktop.interface monospace-font-name 'Sarasa Mono SC Nerd 13'
+
 {{-  end -}}
 {{ end -}}
