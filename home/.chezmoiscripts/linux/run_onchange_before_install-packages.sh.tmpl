@@ -13,20 +13,36 @@
      "units"
      "vim"
      "lua5.4"
-     "font-manager"
+     "preload"
+     "stress"
+     "lm-sensors"
+     "net-tools"
+     "htop"
+     "iftop"
+     "iotop"
      "language-pack-zh-han*"
      "zsh" -}}
 
 {{ $classicSnaps := list -}}
 
 {{ if not .headless -}}
+
 {{   $packages = mustAppend $packages "vim-gtk" -}}
 {{   $packages = mustAppend $packages "fcitx5" -}}
 {{   $packages = mustAppend $packages "fcitx5-chinese-addons" -}}
 {{   $packages = mustAppend $packages "fcitx5-frontend-qt5" -}}
 {{   $packages = mustAppend $packages "fcitx5-config-qt" -}}
+{{   $packages = mustAppend $packages "font-manager" -}}
 {{   $packages = mustAppend $packages "gnome-tweaks" -}}
 {{   $packages = mustAppend $packages "meld" -}}
+{{   $packages = mustAppend $packages "dconf-editor" -}}
+{{   $packages = mustAppend $packages "flameshot" -}}
+{{   $packages = mustAppend $packages "meld" -}}
+{{   $packages = MustAppend $packages "remmina" -}}
+{{   $packages = MustAppend $packages "remmina-plugin-rdp" -}}
+{{   $packages = MustAppend $packages "remmina-plugin-secret" -}}
+{{   $packages = MustAppend $packages "remmina-plugin-spice" -}}
+
 {{ end -}}
 
 {{ if .personal -}}
