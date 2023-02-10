@@ -10,12 +10,12 @@
     url = "https://ghproxy.com/https://raw.githubusercontent.com/skywind3000/z.lua/master/z.lua"
     executable = true
 
-{{- $bwcliVersion :="2022.9.0"}}
-[".local/bin/bw"]
-    type = "file"
-    url = "https://ghproxy.com/https://github.com/bitwarden/clients/releases/download/cli-v{{$bwcliVersion}}/bw-{{ .chezmoi.os }}-{{ $bwcliVersion }}.zip"
-    executable = true
-    [".local/bin/bw".filter]
-        command = "zcat"
+#{{- $bwcliVersion :="2022.9.0"}}
+#[".local/bin/bw"]
+#    type = "file"
+#    url = "https://ghproxy.com/https://github.com/bitwarden/clients/releases/download/cli-v{{$bwcliVersion}}/bw-{{ .chezmoi.os }}-{{ $bwcliVersion }}.zip"
+#    executable = true
+#    [".local/bin/bw".filter]
+#        command = "zcat"
 
 {{- end}}
