@@ -35,4 +35,6 @@ cat ~/.gnome-terminal.properties | dconf load /org/gnome/terminal/
 
 # first sudo apt instll dconf
 sudo apt install dconf-cli
+
+# test code
 ```
